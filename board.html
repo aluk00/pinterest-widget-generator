@@ -30,17 +30,19 @@
     if (!link) {
       document.body.innerHTML = "<h1>Error: Pinterest board link is missing or invalid!</h1>";
     } else {
-      // Render the embed using Pinterest's data attributes
+      // Build the Pinterest embed HTML
       const embedHTML = `
         <a 
-          data-pin-do="embedBoard"
-          data-pin-board-width="400"
-          data-pin-scale-height="240"
-          data-pin-scale-width="80"
+          data-pin-do="embedBoard" 
+          data-pin-board-width="400" 
+          data-pin-scale-height="240" 
+          data-pin-scale-width="80" 
           href="https://www.pinterest.com/${link}/">
         </a>
-        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+        <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
       `;
+
+      // Inject the embedHTML into the page
       document.body.innerHTML = embedHTML;
     }
   </script>
