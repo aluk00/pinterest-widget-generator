@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest Board Widget Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #0073e6;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .output p {
+      margin: 0;
+      padding: 5px 0;
+      word-break: break-word;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pinterest Board Widget Generator</h1>
+  <p>Paste your Pinterest board link below to generate the embed code:</p>
+  
+  <!-- Input form -->
+  <label for="board-link">Pinterest Board Link:</label>
+  <input type="text" id="board-link" placeholder="https://www.pinterest.com/username/board-name/" />
+
+  <!-- Options -->
+  <label>
+    <input type="checkbox" id="hide-header" />
+    Hide Header (removes your display name and board title)
+  </label>
+  <label>
+    <input type="checkbox" id="transparent-bg" />
+    Transparent Background (good for dark mode)
+  </label>
+
+  <!-- Generate button -->
+  <button onclick="generateEmbed()">Generate Embed Code</button>
+
+  <!-- Output -->
+  <div class="output" id="output" style="display: none;">
+    <h3>Generated Embed Code:</h3>
+    <p><strong>HTML (iFrame):</strong></p>
+    <p id="iframe-code"></p>
+    <p><strong>Notion Embed Link:</strong></p>
+    <p id="notion-link"></p>
+  </div>
+  <script>
+    function generateEmbed() {
+      const boardLink = document.getElementById('board-link').value.trim();
+      const hideHeader = document.getElementById('hide-header').checked ? '&hideHeader=1' : '';
+      const transparent = document.getElementById('transparent-bg').checked ? '&transparent=1' : '';
+      
+      // Validate the board link
+      if (!boardLink || (!boardLink.startsWith('https://www.pinterest.com') && !boardLink.startsWith('https://uk.pinterest.com'))) {
+  alert('Please enter a valid Pinterest board link!');
+  return;
+}     
+      // Extract the board username and board name from the URL
+const boardPath = boardLink.replace(/https:\/\/(www|uk)\.pinterest\.com\//, '').replace(/\/$/, '');
+      
+      // Generate embed link and iframe code
+      const embedLink = `https://yourgithubusername.github.io/pinterest/board.html?link=${boardPath}${hideHeader}${transparent}`;
+      const iframeCode = `<iframe src="${embedLink}" width="400" height="300" frameborder="0"></iframe>`;
+      
+      // Display the results
+      document.getElementById('iframe-code').textContent = iframeCode;
+      document.getElementById('notion-link').textContent = embedLink;
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest Board Widget Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #0073e6;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .output p {
+      margin: 0;
+      padding: 5px 0;
+      word-break: break-word;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pinterest Board Widget Generator</h1>
+  <p>Paste your Pinterest board link below to generate the embed code:</p>
+  
+  <!-- Input form -->
+  <label for="board-link">Pinterest Board Link:</label>
+  <input type="text" id="board-link" placeholder="https://www.pinterest.com/username/board-name/" />
+
+  <!-- Options -->
+  <label>
+    <input type="checkbox" id="hide-header" />
+    Hide Header (removes your display name and board title)
+  </label>
+  <label>
+    <input type="checkbox" id="transparent-bg" />
+    Transparent Background (good for dark mode)
+  </label>
+
+  <!-- Generate button -->
+  <button onclick="generateEmbed()">Generate Embed Code</button>
+
+  <!-- Output -->
+  <div class="output" id="output" style="display: none;">
+    <h3>Generated Embed Code:</h3>
+    <p><strong>HTML (iFrame):</strong></p>
+    <p id="iframe-code"></p>
+    <p><strong>Notion Embed Link:</strong></p>
+    <p id="notion-link"></p>
+  </div>
+  <script>
+    function generateEmbed() {
+      const boardLink = document.getElementById('board-link').value.trim();
+      const hideHeader = document.getElementById('hide-header').checked ? '&hideHeader=1' : '';
+      const transparent = document.getElementById('transparent-bg').checked ? '&transparent=1' : '';
+      
+      // Validate the board link
+      if (!boardLink || (!boardLink.startsWith('https://www.pinterest.com') && !boardLink.startsWith('https://uk.pinterest.com'))) {
+  alert('Please enter a valid Pinterest board link!');
+  return;
+}     
+      // Extract the board username and board name from the URL
+const boardPath = boardLink.replace(/https:\/\/(www|uk)\.pinterest\.com\//, '').replace(/\/$/, '');
+      
+      // Generate embed link and iframe code
+      const embedLink = `https://yourgithubusername.github.io/pinterest/board.html?link=${boardPath}${hideHeader}${transparent}`;
+      const iframeCode = `<iframe src="${embedLink}" width="400" height="300" frameborder="0"></iframe>`;
+      
+      // Display the results
+      document.getElementById('iframe-code').textContent = iframeCode;
+      document.getElementById('notion-link').textContent = embedLink;
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
