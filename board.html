@@ -20,24 +20,29 @@
 </head>
 <body>
   <script>
-    // Extract URL parameters
-    const params = new URLSearchParams(window.location.search);
-    const link = params.get("link");
-    const hideHeader = params.get("hideHeader") === "1";
-    const transparent = params.get("transparent") === "1";
+  // Extract URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const link = params.get("link"); // This should be the board ID or path
+  const hideHeader = params.get("hideHeader") === "1";
+  const transparent = params.get("transparent") === "1";
 
-    // Validate the link parameter
-    if (!link) {
-      document.body.innerHTML = "<h1>Error: Pinterest board link is missing or invalid!</h1>";
-    } else {
-      // Build the Pinterest widget URL
-      const embedUrl = `https://www.pinterest.com/${link}/embed/`
-        + (hideHeader ? "?hideHeader=true" : "")
-        + (transparent ? "&transparent=true" : "");
+  // Validate the link parameter
+  if (!link) {
+    document.body.innerHTML = "<h1>Error: Pinterest board link is missing or invalid!</h1>";
+  } else {
+    // Use Pinterest embed service
+    const embedUrl = `https://assets.pinterest.com/ext/embed.html?id=${link}`;
 
-      // Render the iframe with the constructed embed URL
-      document.body.innerHTML = `<iframe src="${embedUrl}" width="400" height="400"></iframe>`;
-    }
-  </script>
+    // Render the iframe with the constructed embed URL
+    document.body.innerHTML = `
+      <iframe 
+        src="${embedUrl}" 
+        width="400" 
+        height="400" 
+        style="${transparent ? 'background-color: transparent;' : ''} border: none;">
+      </iframe>
+    `;
+  }
+</script>
 </body>
 </html>
