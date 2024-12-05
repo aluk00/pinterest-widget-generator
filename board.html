@@ -18,6 +18,7 @@
     }
     h1 {
       text-align: center;
+      color: red;
     }
   </style>
 </head>
@@ -34,11 +35,9 @@
       document.body.innerHTML = "<h1>Error: Pinterest board link is missing or invalid!</h1>";
     } else {
       // Build the Pinterest widget URL
-      const embedUrl = `https://www.pinterest.com/${link}/widget/`
-        + (hideHeader ? "?hideHeader=true" : "")
-        + (transparent ? "&transparent=true" : "");
+      const embedUrl = `https://www.pinterest.com/${link}/widget/`;
 
-      // Render the iframe with the constructed embed URL
+      // Insert the iframe
       document.body.innerHTML = `<iframe src="${embedUrl}" width="400" height="300"></iframe>`;
     }
   </script>
