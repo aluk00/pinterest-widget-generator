@@ -90,35 +90,30 @@
       <iframe class="preview" title="Pinterest Board Preview"></iframe>
     </main>
     <script>
-  function generateEmbed() {
-  const linkInput = document.getElementById("your-link").value.trim();
-  const hideHeader = document.getElementById("hide-header").checked ? "&hideHeader=1" : "";
-  const transparentBg = document.getElementById("transparent-bg").checked ? "&transparent=1" : "";
+      function generateEmbed() {
+        const linkInput = document.getElementById("your-link").value.trim();
+        const hideHeader = document.getElementById("hide-header").checked ? "&hideHeader=1" : "";
+        const transparentBg = document.getElementById("transparent-bg").checked ? "&transparent=1" : "";
 
-  // Validate the Pinterest link
-  if (!linkInput.startsWith("https://www.pinterest.com") && !linkInput.startsWith("https://uk.pinterest.com")) {
-    alert("Please enter a valid Pinterest board link!");
-    return;
-  }
+        if (!linkInput.startsWith("https://www.pinterest.com") && !linkInput.startsWith("https://uk.pinterest.com")) {
+          alert("Please enter a valid Pinterest board link!");
+          return;
+        }
 
-  // Extract the board ID from the link
-  const boardPath = linkInput
-    .replace(/https:\/\/(www|uk)\.pinterest\.com\//, "") // Remove domain
-    .replace(/\/$/, ""); // Remove trailing slash
-  const boardId = boardPath.split("/").join("-"); // Convert path to ID format
+        const boardPath = linkInput
+          .replace(/https:\/\/(www|uk)\.pinterest\.com\//, "")
+          .replace(/\/$/, "");
+        const embedUrl = `https://petracoding.github.io/board.html?link=${boardPath}${hideHeader}${transparentBg}`;
+        
+        const iframeCode = `<iframe src="${embedUrl}" width="400" height="400" frameborder="0"></iframe>`;
+        const notionLink = embedUrl;
 
-  // Construct embed URL
-  const embedUrl = `https://petracoding.github.io/pinterest/board.html?link=${boardId}${hideHeader}${transparentBg}`;
-  const iframeCode = `<iframe src="${embedUrl}" width="400" height="400" frameborder="0"></iframe>`;
+        document.getElementById("iframe-code").textContent = iframeCode;
+        document.getElementById("notion-link").textContent = notionLink;
 
-  // Update the output sections with the generated links
-  document.getElementById("iframe-code").textContent = iframeCode;
-  document.getElementById("notion-link").textContent = embedUrl;
-
-  // Update the preview iframe
-  const previewIframe = document.querySelector(".preview");
-  previewIframe.src = embedUrl;
-}
+        const previewIframe = document.querySelector(".preview");
+        previewIframe.src = embedUrl;
+      }
     </script>
   </body>
 </html>
