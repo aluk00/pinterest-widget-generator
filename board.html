@@ -31,8 +31,8 @@
       document.body.innerHTML = "<h1>Error: Pinterest board link is missing.</h1>";
     } else {
       // Build the Pinterest embed URL
-      const embedUrl = `https://www.pinterest.com/${link}/embed?layout=default`
-        + (hideHeader ? "&hideHeader=true" : "")
+      const embedUrl = `https://www.pinterest.com/${link}/widget/`
+        + (hideHeader ? "?hideHeader=true" : "")
         + (transparent ? "&transparent=true" : "");
 
       // Insert the iframe
