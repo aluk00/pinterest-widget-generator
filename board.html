@@ -12,10 +12,12 @@
       align-items: center;
       height: 100vh;
       background-color: white;
-      font-family: Arial, sans-serif;
     }
     iframe {
       border: none;
+    }
+    h1 {
+      text-align: center;
     }
   </style>
 </head>
@@ -29,15 +31,15 @@
 
     // Validate the link parameter
     if (!link) {
-      document.body.innerHTML = "<h1>Error: Pinterest board link is missing.</h1>";
+      document.body.innerHTML = "<h1>Error: Pinterest board link is missing or invalid!</h1>";
     } else {
-      // Build the Pinterest embed URL
+      // Build the Pinterest widget URL
       const embedUrl = `https://www.pinterest.com/${link}/widget/`
         + (hideHeader ? "?hideHeader=true" : "")
         + (transparent ? "&transparent=true" : "");
 
-      // Insert the iframe
-      document.body.innerHTML = `<iframe src="${embedUrl}" width="400" height="600"></iframe>`;
+      // Render the iframe with the constructed embed URL
+      document.body.innerHTML = `<iframe src="${embedUrl}" width="400" height="300"></iframe>`;
     }
   </script>
 </body>
